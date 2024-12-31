@@ -4,7 +4,7 @@ import { headers } from 'next/headers';
 const API_KEY = '9550de6617b78f5024ae82c1925c3c2d'; // Replace with your actual API key
 const BASE_URL = 'http://api.ipstack.com';
 
-export async function getGeoLocation(ip: string): Promise<{ country: string | null }> {
+async function getGeoLocation(ip: string): Promise<{ country: string | null }> {
   try {
     const response = await axios.get(`${BASE_URL}/${ip}?access_key=${API_KEY}`);
     const data = response.data;
