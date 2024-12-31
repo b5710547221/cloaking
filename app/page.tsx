@@ -20,11 +20,14 @@ export async function getGeoLocation(ip: string): Promise<{ country: string | nu
 export default async function Home() {
   // Fetch headers to get client IP
   const headersList = await headers();
-  const ip =
+  let ip =
     headersList.get('x-forwarded-for')?.split(',')[0]?.trim() ||
     headersList.get('x-real-ip') ||
-    '127.0.0.1'; // Default to localhost for testing
-
+    '127.0.0.1'  ||
+    '::1'; // Default to localhost for testing
+   if (ip === '::1' || ip === '127.0.0.1') {
+    ip = '49.49.233.1'; // Example IP for Thailand
+  }
   // Get geolocation data
   const geo = await getGeoLocation(ip);
 
