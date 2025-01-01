@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { headers } from 'next/headers';
+import P1 from "@/app/p1";
+import P2 from "@/app/p2";
 
 const API_KEY = '9550de6617b78f5024ae82c1925c3c2d'; // Replace with your actual API key
 const BASE_URL = 'http://api.ipstack.com';
@@ -35,11 +37,13 @@ export default async function Home() {
 
   return (
     <div>
-      <h1>Welcome to the Site</h1>
-      <p>Your IP: {ip}</p>
-      <p>
-        Server-side Check: {isInThailand ? 'You are in Thailand!' : 'You are not in Thailand.'}
-      </p>
+     
+      <div>
+        {isInThailand ? 
+        <P1/> : 
+        <P2/>}
+      </div>
+      
     </div>
   );
 }
